@@ -7,10 +7,29 @@ const geistSans = localFont({
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+});
+
+const montserratSemiBold = localFont({
+  src: "./fonts/montserrat/static/Montserrat-SemiBold.ttf",
+  variable:"--font-montserrat-semibold",
+  weight: "100 900"
+});
+
+const montserratMedium = localFont({
+  src: "./fonts/montserrat/static/Montserrat-Medium.ttf",
+  variable:"--font-montserrat-medium",
+  weight: "100 900"
+});
+
+const montserratRegular = localFont({
+  src: "./fonts/montserrat/static/Montserrat-Regular.ttf",
+  variable:"--font-montserrat-regular",
+  weight: "100 900"
 });
 
 export const metadata: Metadata = {
@@ -26,7 +45,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`
+          ${geistSans.variable} 
+          ${geistMono.variable} 
+          ${montserratSemiBold.variable} 
+          ${montserratMedium.variable}
+          ${montserratRegular.variable} antialiased`}
       >
         {children}
       </body>
