@@ -1,8 +1,33 @@
-import Image from "next/image";
-import document_icon from "../../../public/illustrations/undraw_google_docs_re_evm3.svg";
 import Link from 'next/link';
+import { Formik, useFormik } from 'formik';
+import * as Yup from 'yup';
 
 const Register = () => {
+
+    const formik = useFormik({
+        initialValues:{
+            firstName: '',
+            lastName: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+            organization: ''
+        },
+        validationSchema: Yup.object({
+            firstName: Yup.string().required("Name is required"),
+            lastName: Yup.string().required("Surname is required"),
+            email: Yup.string().email("Invalid email").required("Email is required"),
+            password: Yup.string().min(6, "Password must be at least 6 characters long").required("Password is required"),
+            confirmPassword: Yup.string()
+                .oneOf([Yup.ref('password')], "Passwords must be the same")
+                .required("Password confirmation is required"),
+            organization: Yup.string()
+        }),
+        onSubmit:(values) => {
+            console.log(values);
+        }
+      });
+
     return(
         <div className="flex items-center justify-center min-h-screen gap-3 pr-3">
              <div className="flex-1 bg-button_bg_color w-full h-screen flex items-center justify-center" >
@@ -17,23 +42,23 @@ const Register = () => {
                 <form className="flex flex-col gap-2">
                     <div className="flex flex-col">
                         <label className="text-lg text-primary_text_color font-[family-name:var(--font-montserrat-regular)]">Name</label>
-                        <input className="text-sm pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md"/>
+                        <input className="text-md pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md"/>
                     </div>
                     <div className="flex flex-col">
                         <label className="text-lg text-primary_text_color font-[family-name:var(--font-montserrat-regular)]">Surname</label>
-                        <input className="text-sm pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md"/>
+                        <input className="text-md pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md"/>
                     </div>
                     <div className="flex flex-col">
                         <label className="text-lg text-primary_text_color font-[family-name:var(--font-montserrat-regular)]">Email</label>
-                        <input className="text-sm pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md"/>
+                        <input className="text-md pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md"/>
                     </div>
                     <div className="flex flex-col">
                         <label className="text-lg text-primary_text_color font-[family-name:var(--font-montserrat-regular)]">Password</label>
-                        <input className="text-sm pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md"/>
+                        <input className="text-md pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md"/>
                     </div>
                     <div className="flex flex-col">
                         <label className="text-lg text-primary_text_color font-[family-name:var(--font-montserrat-regular)]">Repeat password</label>
-                        <input className="text-sm pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md"/>
+                        <input className="text-md pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md"/>
                     </div>
                    <div>
                     <button className="text-md pt-3 pb-3 pr-5 pl-5 bg-button_bg_color rounded-xl text-white font-[family-name:var(--font-montserrat-semibold)]">Register</button>
