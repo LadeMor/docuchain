@@ -15,15 +15,6 @@ interface IFormInput {
 
 const Register = () => {
 
-    const formInputs = useMemo(() => [
-        { label: 'First name', name: 'firstName', type: 'text' },
-        { label: 'Surname', name: 'lastName', type: 'text' },
-        { label: 'Email', name: 'email', type: 'email' },
-        { label: 'Password', name: 'password', type: 'password' },
-        { label: 'Confirm password', name: 'confirmPassword', type: 'password' },
-        { label: 'Organization', name: 'organization', type: 'text' },
-    ], [])
-
     const {register, handleSubmit, formState: {errors}, watch} = useForm<IFormInput>();
 
     const onSubmit: SubmitHandler<IFormInput> = data => {
@@ -123,7 +114,7 @@ const Register = () => {
                 </form>
                 <h2 className="text-md text-center font-[family-name:var(--font-montserrat-regular)] text-md text-primary_text_color">
                     Already have an account? 
-                   <Link href="#" className="underline text-button_bg_color">Login</Link>
+                   <Link href="/login" className="underline text-button_bg_color">Login</Link>
                 </h2>
             </div>
            </div>
