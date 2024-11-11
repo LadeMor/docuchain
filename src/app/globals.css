@@ -21,3 +21,7 @@ body {
   background: var(--primary_bg_color);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.nav-icon-style{
+  @apply w-7 hover:bg-gray-200 rounded-md p-1 box-content duration-300 cursor-pointer;
+}
