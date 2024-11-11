@@ -5,9 +5,11 @@
 :root {
   --primary_bg_color: #F3F3F4;
   --secondary_bg_color: #FCFCFC;
+  --nav-panel-bg: #B0B0B0;
   --primary-text-color:#797979;
   --border-color:#DADADA;
   --button-bg-color:#FFB27D;
+
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,4 +26,16 @@ body {
 
 .nav-icon-style{
   @apply w-7 hover:bg-gray-200 rounded-md p-1 box-content duration-300 cursor-pointer;
+}
+
+.label-style{
+  @apply text-lg text-primary_text_color font-[family-name:var(--font-montserrat-regular)] after:content-['*'] after:ml-0.5 after:text-red-500;
+}
+
+.input-style{
+  @apply text-base pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md;
+}
+
+.input-error-text-style{
+  @apply font-[family-name:var(--font-montserrat-medium)] text-red-500;
 }

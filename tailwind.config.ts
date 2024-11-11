@@ -12,6 +12,7 @@ const config: Config = {
         primary_bg_color: "var(--primary_bg_color)",
         secondary_bg_color:"var(--secondary_bg_color)",
         primary_text_color:"var(--primary-text-color)",
+        nav_panel_bg:"var(--nav-panel-bg)",
         border_color:"var(--border-color)",
         button_bg_color:"var(--button-bg-color)"
       },

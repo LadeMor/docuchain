@@ -36,77 +36,52 @@ const Register = () => {
                 <h1 className="text-2xl font-bold text-center text-primary_text_color font-[family-name:var(--font-montserrat-semibold)]">Register</h1>
                 <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
                     <div className="flex flex-col">
-                        <label className="text-lg 
-                        text-primary_text_color 
-                        font-[family-name:var(--font-montserrat-regular)] 
-                        after:content-['*'] 
-                        after:ml-0.5 
-                        after:text-red-500">Name</label>
+                        <label className="label-style">Name</label>
                         <input 
                         type='text'
                         {...register("firstName", {required: "First name is required"})} 
-                        className="text-md pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md"/>
-                         {errors.firstName &&  <p className='font-[family-name:var(--font-montserrat-medium)] text-red-500'>{errors.firstName.message}</p>}
+                        className="input-style"/>
+                         {errors.firstName &&  <p className='input-error-text-style'>{errors.firstName.message}</p>}
                     </div>
                     <div className="flex flex-col">
-                        <label className="text-lg 
-                        text-primary_text_color 
-                        font-[family-name:var(--font-montserrat-regular)] 
-                        after:content-['*'] 
-                        after:ml-0.5 
-                        after:text-red-500">Surname</label>
+                        <label className="label-style">Surname</label>
                         <input
                         type='text'
                         {...register("lastName", { required: "Surname is required" })}
-                        className="text-md pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md"/>
-                        {errors.lastName && <p className='font-[family-name:var(--font-montserrat-medium)] text-red-500'>{errors.lastName.message}</p>}
+                        className="input-style"/>
+                        {errors.lastName && <p className='input-error-text-style'>{errors.lastName.message}</p>}
                        
                     </div>
                     <div className="flex flex-col">
-                        <label className="text-lg 
-                        text-primary_text_color 
-                        font-[family-name:var(--font-montserrat-regular)] 
-                        after:content-['*'] 
-                        after:ml-0.5 
-                        after:text-red-500">Email</label>
+                        <label className="label-style">Email</label>
                         <input 
                         type='email'
                         {...register("email", { required: "Email is required", pattern: { value: /^\S+@\S+$/i, message: "Invalid email" } })}
-                        className="text-md pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md"/>
-                         {errors.email && <p className='font-[family-name:var(--font-montserrat-medium)] text-red-500'>{errors.email.message}</p>}
+                        className="input-style"/>
+                         {errors.email && <p className='input-error-text-style'>{errors.email.message}</p>}
                     </div>
                     <div className="flex flex-col">
-                        <label className="text-lg 
-                        text-primary_text_color 
-                        font-[family-name:var(--font-montserrat-regular)] 
-                        after:content-['*'] 
-                        after:ml-0.5 
-                        after:text-red-500">Password</label>
+                        <label className="label-style">Password</label>
                         <input
                         type='password'
                          {...register("password", { required: "Password is required", minLength: { value: 6, message: "Password must be 6 characters long at least" } })}
-                         className="text-md pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md"/>
-                         {errors.password && <p className='font-[family-name:var(--font-montserrat-medium)] text-red-500'>{errors.password.message}</p>}
+                         className="input-style"/>
+                         {errors.password && <p className='input-error-text-style'>{errors.password.message}</p>}
                     </div>
                     <div className="flex flex-col">
-                        <label className="text-lg 
-                        text-primary_text_color 
-                        font-[family-name:var(--font-montserrat-regular)] 
-                        after:content-['*'] 
-                        after:ml-0.5 
-                        after:text-red-500">Repeat password</label>
+                        <label className="label-style">Repeat password</label>
                         <input 
                         type='password'
                          {...register("confirmPassword", { required: "Repeat the password",
                             validate: value => value === password || "Passwords do not matchh"
                           })}
-                        className="text-md pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md"/>
-                        {errors.confirmPassword && <p className='font-[family-name:var(--font-montserrat-medium)] text-red-500'>{errors.confirmPassword.message}</p>}
+                        className="input-style"/>
+                        {errors.confirmPassword && <p className='input-error-text-style'>{errors.confirmPassword.message}</p>}
                     </div>
                     <div className="flex flex-col">
-                        <label className="text-lg text-primary_text_color font-[family-name:var(--font-montserrat-regular)]">Organization</label>
+                        <label className="label-style">Organization</label>
                         <input 
-                        className="text-md pt-3 pb-3 pl-4 pr-5 border border-border_color border-solid rounded-xl shadow-md"/>
+                        className="input-style"/>
                     </div>
                    <div>
                     <button type="submit" className="text-md pt-3 pb-3 pr-5 pl-5 bg-button_bg_color rounded-xl text-white font-[family-name:var(--font-montserrat-semibold)]">Register</button>
