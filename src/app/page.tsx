@@ -89,8 +89,8 @@ export default function Home() {
         },
     ]);
 
-    const selectStatusColor = (status:string) => {
-        switch(status){
+    const selectStatusColor = (status: string) => {
+        switch (status) {
             case "Draft":
                 return "bg-gray-200";
                 break;
@@ -108,116 +108,107 @@ export default function Home() {
     // console.log(date.getDay() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
 
     return (
-        <div className="flex justify-start items-start">
-            <nav className="w-28 bg-white h-screen top-0 sticky flex flex-col items-center pt-7 pb-7 pl-9 pr-9 gap-12">
-                <img src="./icons/Logo.png" />
-                <div className="flex flex-col items-center gap-7">
-                    <img src="./icons/alternate-file.svg" className="nav-icon-style" />
-                    <img src="./icons/user.svg" className="nav-icon-style" />
-                    <img src="./icons/work-bag.svg" className="nav-icon-style" />
-                </div>
-            </nav>
-            <div className="w-full">
-                <div className="flex gap-8">
-                    <div className="bg-nav_panel_bg w-64 h-screen sticky top-0 pt-20 pb-20 pl-10 pr-10 flex flex-col items-start">
-                        <div className="mb-7">
-                            <h2 className="text-white text-base font-[family-name:var(--font-montserrat-semibold)] mb-7">Documents</h2>
-                            <div className="flex flex-col gap-4">
-                                <div className="flex flex-row items-center gap-4 cursor-pointer">
-                                    <img src="./icons/folder.svg" className="" />
-                                    <p className="text-white font-[family-name:var(--font-montserrat-medium)] text-sm">All Documents</p>
-                                </div>
-                                <div className="flex flex-row items-center gap-4 cursor-pointer">
-                                    <img src="./icons/trash-delete-bin.svg" className="" />
-                                    <p className="text-white font-[family-name:var(--font-montserrat-medium)] text-sm">Trash</p>
-                                </div>
+
+        <div className="w-full">
+            <div className="flex gap-8">
+                <div className="bg-nav_panel_bg w-64 h-screen sticky top-0 pt-20 pb-20 pl-10 pr-10 flex flex-col items-start">
+                    <div className="mb-7">
+                        <h2 className="text-white text-base font-[family-name:var(--font-montserrat-semibold)] mb-7">Documents</h2>
+                        <div className="flex flex-col gap-4">
+                            <div className="flex flex-row items-center gap-4 cursor-pointer">
+                                <img src="./icons/folder.svg" className="" />
+                                <p className="text-white font-[family-name:var(--font-montserrat-medium)] text-sm">All Documents</p>
                             </div>
-                        </div>
-                        <div>
-                            <h2 className="text-white text-base font-[family-name:var(--font-montserrat-semibold)] mb-7">Filters</h2>
-                            <div className="flex flex-col gap-4">
-                                <div className="flex gap-4 items-center cursor-pointer">
-                                    <div className="w-3 h-3 bg-gray-200 rounded-full"></div>
-                                    <p className="text-white font-[family-name:var(--font-montserrat-medium)] text-sm">Draft</p>
-                                </div>
-                                <div className="flex gap-4 items-center cursor-pointer">
-                                    <div className="w-3 h-3 bg-yellow-200 rounded-full"></div>
-                                    <p className="text-white font-[family-name:var(--font-montserrat-medium)] text-sm">Sent</p>
-                                </div>
-                                <div className="flex gap-4 items-center cursor-pointer">
-                                    <div className="w-3 h-3 bg-green-300 rounded-full"></div>
-                                    <p className="text-white font-[family-name:var(--font-montserrat-medium)] text-sm">Signed</p>
-                                </div>
+                            <div className="flex flex-row items-center gap-4 cursor-pointer">
+                                <img src="./icons/trash-delete-bin.svg" className="" />
+                                <p className="text-white font-[family-name:var(--font-montserrat-medium)] text-sm">Trash</p>
                             </div>
                         </div>
                     </div>
-                    <div className="w-full">
-                        <div className="bg-white flex justify-end pt-6 pb-6 pr-12 rounded-bl-2xl shadow-lg mb-6">
-                            <div className="flex items-center gap-3">
-                                <div className="flex-col">
-                                    <p className="text-end text-primary_text_color font-[family-name:var(--font-montserrat-semibold)]">Marianna</p>
-                                    <p className="text-end  text-primary_text_color font-[family-name:var(--font-montserrat-light)]">Marianna@servicedeck.io</p>
-                                </div>
-                                <img src="./Person_placeholder.png" />
+                    <div>
+                        <h2 className="text-white text-base font-[family-name:var(--font-montserrat-semibold)] mb-7">Filters</h2>
+                        <div className="flex flex-col gap-4">
+                            <div className="flex gap-4 items-center cursor-pointer">
+                                <div className="w-3 h-3 bg-gray-200 rounded-full"></div>
+                                <p className="text-white font-[family-name:var(--font-montserrat-medium)] text-sm">Draft</p>
+                            </div>
+                            <div className="flex gap-4 items-center cursor-pointer">
+                                <div className="w-3 h-3 bg-yellow-200 rounded-full"></div>
+                                <p className="text-white font-[family-name:var(--font-montserrat-medium)] text-sm">Sent</p>
+                            </div>
+                            <div className="flex gap-4 items-center cursor-pointer">
+                                <div className="w-3 h-3 bg-green-300 rounded-full"></div>
+                                <p className="text-white font-[family-name:var(--font-montserrat-medium)] text-sm">Signed</p>
                             </div>
                         </div>
-                        <div className="flex justify-between items-center pl-9 pr-9 mb-9">
+                    </div>
+                </div>
+                <div className="w-full">
+                    <div className="bg-white flex justify-end pt-6 pb-6 pr-12 rounded-bl-2xl shadow-lg mb-6">
+                        <div className="flex items-center gap-3">
+                            <div className="flex-col">
+                                <p className="text-end text-primary_text_color font-[family-name:var(--font-montserrat-semibold)]">Marianna</p>
+                                <p className="text-end  text-primary_text_color font-[family-name:var(--font-montserrat-light)]">Marianna@servicedeck.io</p>
+                            </div>
+                            <img src="./Person_placeholder.png" className="cursor-pointer" />
+                        </div>
+                    </div>
+                    <div className="flex justify-between items-center pl-9 pr-9 mb-9">
+                        <button className="flex bg-button_bg_color 
+                            text-white font-[family-name:var(--font-montserrat-semibold)] 
+                            gap-3 p-3 rounded-2xl shadow-md">
+                            <img src="./icons/file-add.svg" />
+                            Add new document
+                        </button>
+                        <div className="flex items-center gap-8">
+                            <div className="relative flex items-center text-primary_text_color">
+                                <img src="./icons/search.svg" className="absolute w-9" />
+                                <input type="text" placeholder="Search" className="pl-11 pt-3 pb-3  border-0 border-b-2 border-primary_text_color bg-transparent" />
+                            </div>
                             <button className="flex bg-button_bg_color 
                             text-white font-[family-name:var(--font-montserrat-semibold)] 
                             gap-3 p-3 rounded-2xl shadow-md">
-                                <img src="./icons/file-add.svg" />
-                                Add new document
+                                <img src="./icons/filter.svg" />
+                                Filter
                             </button>
-                            <div className="flex items-center gap-8">
-                                <div className="relative flex items-center text-primary_text_color">
-                                    <img src="./icons/search.svg" className="absolute w-9" />
-                                    <input type="text" placeholder="Search" className="pl-11 pt-3 pb-3  border-0 border-b-2 border-primary_text_color bg-transparent" />
-                                </div>
-                                <button className="flex bg-button_bg_color 
-                            text-white font-[family-name:var(--font-montserrat-semibold)] 
-                            gap-3 p-3 rounded-2xl shadow-md">
-                                    <img src="./icons/filter.svg" />
-                                    Filter
-                                </button>
-                            </div>
                         </div>
-                        <div className="bg-white pt-10 pb-12 pl-9 pr-7 rounded-l-3xl shadow-md">
-                            <table className="w-full">
-                                <tbody>
-                                    <tr className="">
-                                        <th className="table-header-style">Document Name</th>
-                                        <th className="table-header-style">Recipient</th>
-                                        <th className="table-header-style">Date Created</th>
-                                        <th className="table-header-style">Status</th>
-                                        <th className="table-header-style">Modified</th>
-                                        <th className="table-header-style"></th>
-                                    </tr>
-                                    {documentList.length > 0 ?
-                                        documentList.map((item, index) => (
-                                            <tr className="border-t-2 " key={item.id}>
-                                                <td className="pt-6 pb-6 
+                    </div>
+                    <div className="bg-white pt-10 pb-12 pl-9 pr-7 rounded-l-3xl shadow-md">
+                        <table className="w-full">
+                            <tbody>
+                                <tr className="">
+                                    <th className="table-header-style">Document Name</th>
+                                    <th className="table-header-style">Recipient</th>
+                                    <th className="table-header-style">Date Created</th>
+                                    <th className="table-header-style">Status</th>
+                                    <th className="table-header-style">Modified</th>
+                                    <th className="table-header-style"></th>
+                                </tr>
+                                {documentList.length > 0 ?
+                                    documentList.map((item, index) => (
+                                        <tr className="border-t-2 " key={item.id}>
+                                            <td className="pt-6 pb-6 
                                                 font-[family-name:var(--font-montserrat-medium)] 
                                                 text-primary_text_color">{item.documentName}</td>
-                                                <td className="pt-6 pb-6 
+                                            <td className="pt-6 pb-6 
                                                 font-[family-name:var(--font-montserrat-light)]">{item.recipient}</td>
-                                                <td className="pt-6 pb-6 
+                                            <td className="pt-6 pb-6 
                                                 font-[family-name:var(--font-montserrat-medium)] 
                                                 text-primary_text_color" >{item.creationDate}</td>
-                                                <td className="pt-6 pb-6 
+                                            <td className="pt-6 pb-6 
                                                 font-[family-name:var(--font-montserrat-medium)] 
                                                 text-primary_text_color flex items-center gap-3">
-                                                    <div className={`w-3 h-3 ${selectStatusColor(item.status)} rounded-full`}></div>
-                                                    <p>{item.status}</p>
-                                                </td>
-                                                <td className="pt-6 pb-6 font-[family-name:var(--font-montserrat-medium)] text-primary_text_color">2 hours ago</td>
-                                                <th className=""></th>
-                                            </tr>
-                                        ))
+                                                <div className={`w-3 h-3 ${selectStatusColor(item.status)} rounded-full`}></div>
+                                                <p>{item.status}</p>
+                                            </td>
+                                            <td className="pt-6 pb-6 font-[family-name:var(--font-montserrat-medium)] text-primary_text_color">2 hours ago</td>
+                                            <th className=""></th>
+                                        </tr>
+                                    ))
                                     :
                                     <h1>Loading...</h1>}
-                                </tbody>
-                            </table>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

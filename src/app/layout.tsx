@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import NavigationPanel from "@/components/navigation-panel/component";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -16,25 +17,25 @@ const geistMono = localFont({
 
 const montserratSemiBold = localFont({
   src: "./fonts/montserrat/static/Montserrat-SemiBold.ttf",
-  variable:"--font-montserrat-semibold",
+  variable: "--font-montserrat-semibold",
   weight: "100 900"
 });
 
 const montserratMedium = localFont({
   src: "./fonts/montserrat/static/Montserrat-Medium.ttf",
-  variable:"--font-montserrat-medium",
+  variable: "--font-montserrat-medium",
   weight: "100 900"
 });
 
 const montserratRegular = localFont({
   src: "./fonts/montserrat/static/Montserrat-Regular.ttf",
-  variable:"--font-montserrat-regular",
+  variable: "--font-montserrat-regular",
   weight: "100 900"
 });
 
 const montserratLight = localFont({
   src: "./fonts/montserrat/static/Montserrat-Light.ttf",
-  variable:"--font-montserrat-light",
+  variable: "--font-montserrat-light",
   weight: "100 900"
 });
 export const metadata: Metadata = {
@@ -47,6 +48,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  
+
   return (
     <html lang="en">
       <body
@@ -59,7 +63,11 @@ export default function RootLayout({
           ${montserratLight.variable}
           antialiased`}
       >
-        {children}
+        <div className="flex justify-start items-start">
+          <NavigationPanel/>
+          {children}
+        </div>
+        
       </body>
     </html>
   );
