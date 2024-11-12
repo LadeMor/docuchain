@@ -39,3 +39,7 @@ body {
 .input-error-text-style{
   @apply font-[family-name:var(--font-montserrat-medium)] text-red-500;
 }
+
+.table-header-style{
+  @apply text-left pt-6 pb-6 font-[family-name:var(--font-montserrat-semibold)] text-primary_text_color;
+}
