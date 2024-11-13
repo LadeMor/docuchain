@@ -17,8 +17,28 @@ const Register = () => {
 
     const {register, handleSubmit, formState: {errors}, watch} = useForm<IFormInput>();
 
-    const onSubmit: SubmitHandler<IFormInput> = data => {
-        console.log(data);
+    const onSubmit: SubmitHandler<IFormInput> = async data => {
+        
+        try{
+            const response = await fetch("http://localhost:3001/register",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            if(response.ok){
+                alert("Registration successful!");
+                console.log(response);
+            }else{
+                alert("Registration failed");
+            }
+        }catch(error){
+            console.error("Error during registration:", error);
+            alert("Registration failed. Please try again.");
+        }
+
     }
 
     const password = watch("password");

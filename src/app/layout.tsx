@@ -1,7 +1,11 @@
+
+
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import NavigationPanel from "@/components/navigation-panel/component";
+import AuthWrapper from "@/components/auth-wrapper/component";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -49,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  
+
 
   return (
     <html lang="en">
@@ -63,11 +67,10 @@ export default function RootLayout({
           ${montserratLight.variable}
           antialiased`}
       >
-        <div className="flex justify-start items-start">
-          <NavigationPanel/>
+        <AuthWrapper>
           {children}
-        </div>
-        
+        </AuthWrapper>
+
       </body>
     </html>
   );
