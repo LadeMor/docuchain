@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useRouter } from "next/router";
 
 interface ILoginForm {
     email: string,
@@ -9,16 +10,43 @@ interface ILoginForm {
 }
 
 const Login = () => {
-
+    const router = useRouter();
     const {register, handleSubmit, formState: {errors}, watch} = useForm<ILoginForm>();
 
-    const onSubmit: SubmitHandler<ILoginForm> = data => {
-        console.log(data);
+    const onSubmit: SubmitHandler<ILoginForm> = async data => {
+        try{
+           const response = await fetch("http://localhost:3001/login", {
+                method: "POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                credentials: "include",
+                body: JSON.stringify(data)
+            });
+            
+            console.log("Response status:", response.status);
+            
+            if(response.ok){
+                const result = await response.json();
+                alert("Login succesfull");
+                router.push("/");
+
+            }else{
+                const error = await response.json();
+                console.error("Error:", error);
+                alert("Login failed");
+            }
+
+        }catch(error){
+            console.error("Error during login: " + error);
+            alert("Login failed please try again");
+        }
     }
 
     return (
-        <div className="flex justify-center items-center p-9">
-            <div>
+        <div className='w-full flex justify-center items-center '>
+        <div className="p-9">
+           
             <div className="bg-secondary_bg_color w-96 p-3 rounded-xl flex-1">
                 <h1 className="text-2xl font-bold text-center text-primary_text_color font-[family-name:var(--font-montserrat-semibold)]">Login</h1>
                 <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>

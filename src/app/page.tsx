@@ -1,10 +1,68 @@
 "use client"
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+type IUserId = string;
+
+interface IUserData {
+    email:string,
+    firstName: string,
+    lastName: string
+}
 
 export default function Home() {
 
+    const [userId, setUserId] = useState<IUserId | null>(null);
+    const [userData, setUserData] = useState<IUserData | null>(null);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await fetch("http://localhost:3001/me", {
+                    method: "GET",
+                    credentials: "include", 
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(data);
+                    setUserId(data.user.id);
+                } else {
+                    console.error("Failed to fetch user info");
+                }
+            } catch (error) {
+                console.error("Error fetching user info:", error);
+            }
+        };
+
+        fetchUser();
+    }, []);
+
+    useEffect(() => {
+        if (!userId) return;
+
+        const fetchUserData = async () => {
+            try {
+                const response = await fetch(`http://localhost:3001/user/${userId}`, {
+                    method: "GET",
+                    credentials: "include",
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    setUserData(data); 
+                    console.log(data);
+                } else {
+                    console.error("Failed to fetch user data");
+                }
+            } catch (error) {
+                console.error("Error fetching user data:", error);
+            }
+        };
+
+        fetchUserData();
+    }, [userId])
 
     const [documentList, setDocumentList] = useState([
         {
@@ -107,6 +165,8 @@ export default function Home() {
     // const date = new Date()
     // console.log(date.getDay() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds());
 
+
+
     return (
 
         <div className="w-full">
@@ -147,8 +207,12 @@ export default function Home() {
                     <div className="bg-white flex justify-end pt-6 pb-6 pr-12 rounded-bl-2xl shadow-lg mb-6">
                         <div className="flex items-center gap-3">
                             <div className="flex-col">
-                                <p className="text-end text-primary_text_color font-[family-name:var(--font-montserrat-semibold)]">Marianna</p>
-                                <p className="text-end  text-primary_text_color font-[family-name:var(--font-montserrat-light)]">Marianna@servicedeck.io</p>
+                                <p className="text-end text-primary_text_color font-[family-name:var(--font-montserrat-semibold)]">
+                                    Loading...
+                                </p>
+                                <p className="text-end  text-primary_text_color font-[family-name:var(--font-montserrat-light)]">
+                                    Loading...
+                                </p>
                             </div>
                             <img src="./Person_placeholder.png" className="cursor-pointer" />
                         </div>
