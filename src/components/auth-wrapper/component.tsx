@@ -7,7 +7,7 @@ import NavigationPanel from "../navigation-panel/component";
 
 export default function AuthWrapper({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(true);
 
   useEffect(() => {
 
@@ -25,7 +25,7 @@ export default function AuthWrapper({ children }: { children: React.ReactNode })
         }
 
         const data = await response.json();
-        console.log(data);
+        
       } catch (error) {
         if (error instanceof Error) {
 

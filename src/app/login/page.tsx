@@ -2,7 +2,8 @@
 
 import Link from 'next/link';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from 'react';
 
 interface ILoginForm {
     email: string,
@@ -11,11 +12,20 @@ interface ILoginForm {
 
 const Login = () => {
     const router = useRouter();
+
+    const [isLogin, setIsLogin] = useState(false);
     const {register, handleSubmit, formState: {errors}, watch} = useForm<ILoginForm>();
 
+    useEffect(() => {
+        if(isLogin){
+            router.push("/");
+        }
+    }, [isLogin])
+
     const onSubmit: SubmitHandler<ILoginForm> = async data => {
+        
         try{
-           const response = await fetch("http://localhost:3001/login", {
+           const response = await fetch("http://localhost:3001/user/login", {
                 method: "POST",
                 headers:{
                     "Content-Type":"application/json"
@@ -28,8 +38,9 @@ const Login = () => {
             
             if(response.ok){
                 const result = await response.json();
+                
                 alert("Login succesfull");
-                router.push("/");
+                setIsLogin(true);
 
             }else{
                 const error = await response.json();

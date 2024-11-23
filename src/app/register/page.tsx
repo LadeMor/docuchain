@@ -18,9 +18,8 @@ const Register = () => {
     const {register, handleSubmit, formState: {errors}, watch} = useForm<IFormInput>();
 
     const onSubmit: SubmitHandler<IFormInput> = async data => {
-        
         try{
-            const response = await fetch("http://localhost:3001/register",{
+            const response = await fetch("http://localhost:3001/user/register",{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"
@@ -101,6 +100,7 @@ const Register = () => {
                     <div className="flex flex-col">
                         <label className="label-style">Organization</label>
                         <input 
+                        {...register("organization")}
                         className="input-style"/>
                     </div>
                    <div>

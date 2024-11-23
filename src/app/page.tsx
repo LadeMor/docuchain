@@ -6,9 +6,9 @@ import { useState, useEffect } from "react";
 type IUserId = string;
 
 interface IUserData {
-    email:string,
-    firstName: string,
-    lastName: string
+    Email:string,
+    First_name: string,
+    Last_name: string
 }
 
 export default function Home() {
@@ -26,8 +26,7 @@ export default function Home() {
 
                 if (response.ok) {
                     const data = await response.json();
-                    console.log(data);
-                    setUserId(data.user.id);
+                    setUserId(data.userId)
                 } else {
                     console.error("Failed to fetch user info");
                 }
@@ -51,8 +50,9 @@ export default function Home() {
 
                 if (response.ok) {
                     const data = await response.json();
-                    setUserData(data); 
                     console.log(data);
+                    setUserData(data); 
+                    
                 } else {
                     console.error("Failed to fetch user data");
                 }
@@ -176,11 +176,11 @@ export default function Home() {
                         <h2 className="text-white text-base font-[family-name:var(--font-montserrat-semibold)] mb-7">Documents</h2>
                         <div className="flex flex-col gap-4">
                             <div className="flex flex-row items-center gap-4 cursor-pointer">
-                                <img src="./icons/folder.svg" className="" />
+                                <img src="/icons/folder.svg" className="" />
                                 <p className="text-white font-[family-name:var(--font-montserrat-medium)] text-sm">All Documents</p>
                             </div>
                             <div className="flex flex-row items-center gap-4 cursor-pointer">
-                                <img src="./icons/trash-delete-bin.svg" className="" />
+                                <img src="/icons/trash-delete-bin.svg" className="" />
                                 <p className="text-white font-[family-name:var(--font-montserrat-medium)] text-sm">Trash</p>
                             </div>
                         </div>
@@ -208,31 +208,31 @@ export default function Home() {
                         <div className="flex items-center gap-3">
                             <div className="flex-col">
                                 <p className="text-end text-primary_text_color font-[family-name:var(--font-montserrat-semibold)]">
-                                    Loading...
+                                    {userData?.First_name ? userData.First_name : "Loading..."} {userData?.Last_name ? userData.Last_name : "Loading..."}
                                 </p>
                                 <p className="text-end  text-primary_text_color font-[family-name:var(--font-montserrat-light)]">
-                                    Loading...
+                                    {userData?.Email ? userData.Email : "Loading..."}
                                 </p>
                             </div>
-                            <img src="./Person_placeholder.png" className="cursor-pointer" />
+                            <img src="/Person_placeholder.png" className="cursor-pointer" />
                         </div>
                     </div>
                     <div className="flex justify-between items-center pl-9 pr-9 mb-9">
                         <button className="flex bg-button_bg_color 
                             text-white font-[family-name:var(--font-montserrat-semibold)] 
                             gap-3 p-3 rounded-2xl shadow-md">
-                            <img src="./icons/file-add.svg" />
+                            <img src="/icons/file-add.svg" />
                             Add new document
                         </button>
                         <div className="flex items-center gap-8">
                             <div className="relative flex items-center text-primary_text_color">
-                                <img src="./icons/search.svg" className="absolute w-9" />
+                                <img src="/icons/search.svg" className="absolute w-9" />
                                 <input type="text" placeholder="Search" className="pl-11 pt-3 pb-3  border-0 border-b-2 border-primary_text_color bg-transparent" />
                             </div>
                             <button className="flex bg-button_bg_color 
                             text-white font-[family-name:var(--font-montserrat-semibold)] 
                             gap-3 p-3 rounded-2xl shadow-md">
-                                <img src="./icons/filter.svg" />
+                                <img src="/icons/filter.svg" />
                                 Filter
                             </button>
                         </div>
